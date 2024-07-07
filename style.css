@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: #0a0a23;
+  --section-bg-color: whitesmoke;
+  --golden-yellow: #feac32;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  font-family: sans-serif;
+}
+
+.start-screen {
+  background-color: var(--section-bg-color);
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  padding: 20px;
+  padding-bottom: 15px;
+  user-select: none;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.instructions {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px;
+  line-height: 2rem;
+}
+
+.btn {
+  cursor: pointer;
+  width: 120px;
+  margin: 10px;
+  padding: 5px;
+  color: #0a0a23;
+  font-size: 18px;
+  background-color: var(--golden-yellow);
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: var(--golden-yellow);
+  border-width: 3px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-image: linear-gradient(#ffcc4c, #f89808);
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkpoint-screen {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  text-align: center;
+  background-color: var(--section-bg-color);
+  border-radius: 20px;
+  padding: 10px;
+  display: none;
+  user-select: none;
+}
+
+#canvas {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .start-screen {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  .checkpoint-screen {
+    width: 60%;
+    max-width: 400px;
+  }
+}
