@@ -26,6 +26,7 @@ class Player {
     this.width = proportionalSize(40);
     this.height = proportionalSize(40);
   }
+
   draw() {
     ctx.fillStyle = "#99c9ff";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -65,6 +66,7 @@ class Platform {
     this.width = 200;
     this.height = proportionalSize(40);
   }
+
   draw() {
     ctx.fillStyle = "#acd157";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
@@ -86,6 +88,7 @@ class CheckPoint {
     ctx.fillStyle = "#f1be32";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
+
   claim() {
     this.width = 0;
     this.height = 0;
@@ -97,7 +100,7 @@ class CheckPoint {
 const player = new Player();
 
 const platformPositions = [
-  // Checkpoin 1
+  // Checkpoint 1
   { x: 500, y: proportionalSize(450) },
   { x: 700, y: proportionalSize(400) },
   { x: 900, y: proportionalSize(350) },
@@ -190,8 +193,7 @@ const animate = () => {
       player.position.y + player.height <= platform.position.y,
       player.position.y + player.height + player.velocity.y >= platform.position.y,
       player.position.x >= platform.position.x - player.width / 2,
-      player.position.x <=
-        platform.position.x + platform.width - player.width / 3,
+      player.position.x <= platform.position.x + platform.width - player.width / 3,
     ];
 
     if (collisionDetectionRules.every((rule) => rule)) {
@@ -201,8 +203,7 @@ const animate = () => {
 
     const platformDetectionRules = [
       player.position.x >= platform.position.x - player.width / 2,
-      player.position.x <=
-        platform.position.x + platform.width - player.width / 3,
+      player.position.x <= platform.position.x + platform.width - player.width / 3,
       player.position.y + player.height >= platform.position.y,
       player.position.y <= platform.position.y + platform.height,
     ];
@@ -217,11 +218,9 @@ const animate = () => {
     const checkpointDetectionRules = [
       player.position.x >= checkpoint.position.x,
       player.position.y >= checkpoint.position.y,
-      player.position.y + player.height <=
-        checkpoint.position.y + checkpoint.height,
+      player.position.y + player.height <= checkpoint.position.y + checkpoint.height,
       isCheckpointCollisionDetectionActive,
-      player.position.x - player.width <=
-        checkpoint.position.x - checkpoint.width + player.width * 0.9,
+      player.position.x - player.width <= checkpoint.position.x - checkpoint.width + player.width * 0.9,
       index === 0 || checkpoints[index - 1].claimed === true,
     ];
 
